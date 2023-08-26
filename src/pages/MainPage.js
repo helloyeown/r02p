@@ -1,10 +1,10 @@
-import TestLayout from "../layouts/TestLayout";
+import BasicLayout from "../layouts/BasicLayout";
 
 const MainPage = () => {
     return (  
-        <TestLayout>
+        <BasicLayout>
             <div>Main</div>
-        </TestLayout>
+        </BasicLayout>
     );
 }
  

@@ -1,7 +1,10 @@
+import BasicLayout from "../layouts/BasicLayout";
 
 const AboutPage = () => {
-    return (  
-        <div>About</div>
+    return ( 
+        <BasicLayout>
+            <h2>About Page</h2>
+        </BasicLayout> 
     );
 }
  
