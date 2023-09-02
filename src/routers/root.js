@@ -9,6 +9,7 @@ const { default: AboutPage } = require("../pages/AboutPage");
 
 const Board_Index = lazy(() => import("../pages/board/IndexPage"))
 const Board_List = lazy(() => import("../pages/board/ListPage"))
+const Baord_Read = lazy(() => import("../pages/board/ReadPage"))
 
 const router = createBrowserRouter([
     {
@@ -26,9 +27,13 @@ const router = createBrowserRouter([
             {
                 path: "list",
                 element: <Suspense fallback={LoadingPage}><Board_List /></Suspense>
+            },
+            {
+                path: "read/:bno",
+                element: <Suspense fallback={LoadingPage}><Baord_Read/></Suspense>
             }
         ]
-    },
+    }
 ])
 
 export default router;

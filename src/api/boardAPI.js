@@ -9,3 +9,10 @@ export const getList = async(queryObj) => {
     return res.data
 
 }
+
+export const readBoard = async(bno) => {
+
+    const res = await axios.get(`http://localhost:8080/api/board/${bno}`)
+    return res.data
+
+}
