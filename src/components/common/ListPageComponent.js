@@ -2,6 +2,7 @@
 const ListPageComponent = ({movePage, end, start, next, prev, pageNums}) => {
 
     const handleClickPage = (num) => {
+        console.log(num)
         movePage(num)
     }
 

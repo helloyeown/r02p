@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getRepliesOfBoard } from "../../api/repliesAPI";
+import ListPageComponent from "../common/ListPageComponent";
 
 const initState = {
 	dtoList: [],
@@ -13,7 +14,7 @@ const initState = {
 	requestDTO: null
 }
 
-const ReplyList = ({bno, page, last, movePage}) => {
+const ReplyList = ({bno, page, last, refresh, movePage}) => {
 
     const [listData, setListData] = useState(initState)
 
@@ -21,12 +22,20 @@ const ReplyList = ({bno, page, last, movePage}) => {
         getRepliesOfBoard(bno, page, last).then(data => {
             setListData(data)
         })
-    }, [bno])
+    }, [bno, page, last, refresh])
+
+    console.log("listData........... ", listData)
 
 
     return (  
         <div>
-            
+            <ul>
+                {listData.dtoList.map(reply =>
+                    <li key={reply.rno}>[{reply.rno}] {reply.reply}</li>    
+                )}
+            </ul>
+
+            <ListPageComponent movePage={movePage} {...listData}></ListPageComponent>
         </div>
     );
 }

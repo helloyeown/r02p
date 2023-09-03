@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import ReplyList from "./ReplyList";
+import ReplyInput from "./ReplyInput";
 
 const initState = {
     bno: 0,
     page: 1,
-    last: false
+    last: false,
+    refresh: false
 }
 
 // index 같은 역할
@@ -22,12 +24,21 @@ const ReplyWrapper = ({bno}) => {
 
     const movePage = (num) => {
         data.page = num
+        data.last = false
+        data.refresh = !data.refresh
+        setData({...data})
+    }
+
+    const refreshLast = () => {
+        data.last = true
+        data.refresh = !data.refresh
         setData({...data})
     }
 
 
     return (  
         <div>
+            <ReplyInput bno={bno} refreshLast={refreshLast}></ReplyInput>
             <ReplyList {...data} movePage={movePage}></ReplyList>
         </div>
     );
