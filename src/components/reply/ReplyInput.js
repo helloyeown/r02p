@@ -20,6 +20,13 @@ const ReplyInput = ({bno, refreshLast}) => {
     const handleClickRegister = (e) => {
         reply.bno = bno
 
+        console.log(reply)
+
+        if(reply.reply === '' || reply.replyer === ''){
+            alert('내용을 입력해주세요.')
+            return
+        }
+
         postReply(reply).then(data => {
             console.log("data......", data)
             refreshLast()

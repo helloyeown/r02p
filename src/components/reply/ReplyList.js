@@ -14,7 +14,7 @@ const initState = {
 	requestDTO: null
 }
 
-const ReplyList = ({bno, page, last, refresh, movePage}) => {
+const ReplyList = ({bno, page, last, refresh, movePage, changeCurrent}) => {
 
     const [listData, setListData] = useState(initState)
 
@@ -24,14 +24,15 @@ const ReplyList = ({bno, page, last, refresh, movePage}) => {
         })
     }, [bno, page, last, refresh])
 
-    console.log("listData........... ", listData)
-
 
     return (  
         <div>
             <ul>
                 {listData.dtoList.map(reply =>
-                    <li key={reply.rno}>[{reply.rno}] {reply.reply}</li>    
+                    <li key={reply.rno} onClick={() => changeCurrent(reply.rno)} className={reply.reply !== '삭제된 댓글입니다.' ?
+                    "cursor-pointer" : ""
+                }>
+                        [{reply.rno}] {reply.reply}</li>    
                 )}
             </ul>
 
